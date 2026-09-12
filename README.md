@@ -70,6 +70,9 @@ an identity they control and funds they've touched. Most stall for weeks
 before their first signed message. This compresses that to an afternoon:
 one file, one key, one funded agent, ready for whatever room comes next.
 
+Don't trust it blindly: `python3 test_wallet.py` proves DID shape,
+sign→verify round-trips, sweep rules and key handling — offline, no keys.
+
 ## License
 
 MIT.
