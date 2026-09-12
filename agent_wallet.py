@@ -40,12 +40,15 @@ def _ed():
 def load_seed(folder):
     key_file = os.path.join(folder, "identity.key")
     if os.path.exists(key_file):
-        seed = open(key_file).read().strip()
+        with open(key_file) as f:
+            seed = f.read().strip()
     else:
         txts = glob.glob(os.path.join(folder, "technocore-identity-*.txt"))
         seed = ""
         if txts:
-            for line in open(txts[0]).read().splitlines():
+            with open(txts[0]) as f:
+                content = f.read()
+            for line in content.splitlines():
                 if SEED_PATTERN.match(line.strip()):
                     seed = line.strip()
                     break

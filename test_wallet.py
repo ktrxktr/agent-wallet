@@ -55,7 +55,8 @@ class TestWallet(unittest.TestCase):
     def test_new_refuses_overwrite(self):
         import subprocess
         d = tempfile.mkdtemp()
-        open(os.path.join(d, "identity.key"), "w").write("ab" * 32)
+        with open(os.path.join(d, "identity.key"), "w") as f:
+            f.write("ab" * 32)
         r = subprocess.run([sys.executable, "agent_wallet.py", "new", d],
                            capture_output=True, text=True, cwd=os.path.dirname(os.path.abspath(__file__)))
         self.assertNotEqual(r.returncode, 0)
