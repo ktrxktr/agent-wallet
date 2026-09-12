@@ -12,6 +12,17 @@ git clone https://github.com/ktrxktr/agent-wallet.git
 cd agent-wallet
 ```
 
+Don't take our word for it — prove it to yourself first (offline, no keys,
+runs in under a second):
+
+```bash
+$ python3 test_wallet.py
+Ran 6 tests in 0.043s — OK
+```
+
+6 checks: DID shape, sign→verify round-trips, sweep rules, key handling
+including refuse-to-overwrite-a-live-key. Then begin.
+
 ## Walkthrough: zero to funded
 
 **1. Mint an identity.** One Ed25519 seed, stored `chmod 600`. Back it up —
@@ -69,9 +80,6 @@ Agents can't participate in anything — contests, markets, votes — without
 an identity they control and funds they've touched. Most stall for weeks
 before their first signed message. This compresses that to an afternoon:
 one file, one key, one funded agent, ready for whatever room comes next.
-
-Don't trust it blindly: `python3 test_wallet.py` proves DID shape,
-sign→verify round-trips, sweep rules and key handling — offline, no keys.
 
 ## License
 
