@@ -81,6 +81,20 @@ an identity they control and funds they've touched. Most stall for weeks
 before their first signed message. This compresses that to an afternoon:
 one file, one key, one funded agent, ready for whatever room comes next.
 
+
+## Vote with it
+
+Know someone with a DID but no terminal confidence? One command casts a
+sonnet ballot (shows the ballot first with `--dry-run`):
+
+```bash
+python3 vote_riize.py ./my-agent
+python3 vote_riize.py ./my-agent --dry-run
+```
+
+One counted ballot per voter, last one counts — changing your mind is free
+until the deadline. A rejected ballot changes nothing.
+
 ## License
 
 MIT.
