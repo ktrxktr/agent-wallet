@@ -37,7 +37,15 @@ def _ed():
         sys.exit("need `pip install cryptography` (only dependency)")
 
 
-def load_seed(folder):
+def load_seed(path):
+    """Accept a key folder (identity.key inside) OR a key file directly."""
+    if os.path.isfile(path):
+        with open(path) as f:
+            seed = f.read().strip()
+        if SEED_PATTERN.match(seed):
+            return _ed().from_private_bytes(bytes.fromhex(seed))
+        sys.exit("no valid seed in %s" % path)
+    folder = path
     key_file = os.path.join(folder, "identity.key")
     if os.path.exists(key_file):
         with open(key_file) as f:

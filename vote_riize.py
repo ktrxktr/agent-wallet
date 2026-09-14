@@ -27,7 +27,7 @@ ENTRY = "riize"
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
-        sys.exit("usage: vote_riize.py <key-folder> [--dry-run]")
+        sys.exit("usage: vote_riize.py <key-folder-or-file> [--dry-run]")
     folder = sys.argv[1]
     dry = "--dry-run" in sys.argv
     key = load_seed(folder)
